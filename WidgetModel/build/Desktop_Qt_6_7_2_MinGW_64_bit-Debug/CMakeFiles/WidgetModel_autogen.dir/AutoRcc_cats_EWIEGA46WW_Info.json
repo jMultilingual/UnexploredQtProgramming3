@@ -1,0 +1,24 @@
+{
+	"BUILD_DIR" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WidgetModel_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Qt/src_self/WidgetModel",
+	"CMAKE_SOURCE_DIR" : "C:/Qt/src_self/WidgetModel",
+	"INCLUDE_DIR" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/WidgetModel_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Qt/src_self/WidgetModel/3.jpg",
+		"C:/Qt/src_self/WidgetModel/2.jpg",
+		"C:/Qt/src_self/WidgetModel/1.jpg"
+	],
+	"LOCK_FILE" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/WidgetModel_autogen.dir/AutoRcc_cats_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "cats" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_cats.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.7.2/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Qt/src_self/WidgetModel/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/WidgetModel_autogen.dir/AutoRcc_cats_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Qt/src_self/WidgetModel/cats.qrc",
+	"VERBOSITY" : 0
+}
