@@ -5,24 +5,17 @@
 #include <QVariant>
 
 #include <QModelIndex>
-
 class Item : public QObject
 {
     Q_OBJECT
-
 public:
-
-    Item();
-    QHash<int, QVariant> m_var;
-    void setData( QVariant value, Qt::ItemDataRole role);
-    QVariant data( Qt::ItemDataRole role);
+    explicit Item(QObject *parent = nullptr);
     QList<Item*> m_children;
-    QList<Item*> children();
     QString m_uuid;
     QString m_puuid;
-    QString uuid();
-    QString puuid();
-
+    QHash<int, QVariant> m_var;
+    void setData(QVariant value, Qt::ItemDataRole role);
+    QVariant data(Qt::ItemDataRole role);
     Item *m_parent = nullptr;
     Item * parent();
     void setParent(Item* parent);
@@ -44,8 +37,12 @@ public:
     int indexOfChild(Item * child);
     void addChildren(QList<Item*> children);
     void insertChildren(int row, QList<Item*> children);
+    QList<Item*> children();
+
+    QString uuid();
     friend QDataStream& operator<<(QDataStream& out, const Item& item);
     friend QDataStream& operator>>(QDataStream& in, Item& item);
+signals:
 };
 
 #endif // ITEM_H

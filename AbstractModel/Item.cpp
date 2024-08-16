@@ -1,24 +1,23 @@
 #include "Item.h"
 #include <QtGui>
-#include <QUuid>
 
-Item::Item()
-    :m_var()
+Item::Item(QObject *parent)
+    : QObject{parent}, m_var()
 {
+
+
     m_var[Qt::DisplayRole] = QVariant("string");
     m_var[Qt::FontRole] = QVariant(QFont("Times New Roman", 18));
     m_var[Qt::ToolTipRole] = QVariant("tooltip");
     m_var[Qt::SizeHintRole] = QVariant(QSize(50, 50));
     m_var[Qt::CheckStateRole] = QVariant(Qt::Checked);
-    m_var[Qt::DecorationRole] = QVariant(QIcon());
-    m_var[Qt::ForegroundRole] = QVariant(QBrush(QColor(  0,   0,   0)));
-    m_var[Qt::BackgroundRole] = QVariant(QBrush(QColor(255, 255, 255)));
-    m_var[Qt::TextAlignmentRole] = QVariant(Qt::AlignLeft);
-
+    m_var[Qt::ItemDataRole::DecorationRole] = QVariant(QIcon());
+    m_var[Qt::ItemDataRole::ForegroundRole] = QVariant(QBrush(QColor(0, 0, 0)));
+    m_var[Qt::ItemDataRole::BackgroundRole] = QVariant(QBrush(QColor(255, 255, 255)));
+    m_var[Qt::ItemDataRole::TextAlignmentRole] = QVariant(Qt::AlignLeft);
     m_children = {};
     m_uuid = QUuid::createUuid().toString();
     m_puuid = QUuid::createUuid().toString();
-
 }
 
 void Item::setData(QVariant value, Qt::ItemDataRole role)
@@ -29,11 +28,6 @@ void Item::setData(QVariant value, Qt::ItemDataRole role)
 QVariant Item::data(Qt::ItemDataRole role)
 {
     return m_var[role];
-}
-
-QString Item::puuid()
-{
-    return m_puuid;
 }
 
 QDataStream& operator<<(QDataStream& out, const Item& item)
@@ -50,6 +44,7 @@ QDataStream& operator<<(QDataStream& out, const Item& item)
     out << item.m_var[Qt::TextAlignmentRole];
     out << item.m_uuid;
     out << item.m_puuid;
+
     return out;
 }
 
@@ -68,7 +63,6 @@ QDataStream& operator>>(QDataStream& in, Item& item)
     in >> item.m_var[Qt::TextAlignmentRole];
     in >> item.m_uuid;
     in >> item.m_puuid;
-
     return in;
 }
 
@@ -82,15 +76,7 @@ void Item::setParent(Item *parent)
     m_parent = parent;
 }
 
-QList<Item*> Item::children()
-{
-    return m_children;
-}
 
-QString Item::uuid()
-{
-    return m_uuid;
-}
 
 int Item::childCount()
 {
@@ -108,7 +94,10 @@ bool Item::contains(Item *item)
 
 }
 
-
+QString Item::uuid()
+{
+    return m_uuid;
+}
 
 QModelIndex Item::modelIndex()
 {
@@ -168,6 +157,8 @@ bool Item::removeChildren(int row, int count)
     return true;
 }
 
+
+
 int Item::indexOfChild(Item *child)
 {
     return m_children.indexOf(child);
@@ -191,4 +182,9 @@ void Item::insertChildren(int row, QList<Item *> children)
         insertChild(row, child);
         row++;
     }
+}
+
+QList<Item *> Item::children()
+{
+    return m_children;
 }
